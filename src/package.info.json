@@ -11,6 +11,7 @@
   ],
   "description": "Describe what your extension does",
   "author": "",
+  "category": "other",
   "tags": "Utility, ency-extension",
   "iconPath": "",
   "requiresRestart": false

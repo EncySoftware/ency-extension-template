@@ -63,7 +63,7 @@ the store backend packs the uploaded build output itself.
 | `src/Extension.cs` | your extension logic (`IExtensionUtility.Run`) |
 | `src/ExtensionFactory.cs` | entry point ENCY looks for (`CAMAPI.ExtensionFactory`) — keep the class/namespace |
 | `src/<YourName>.settings.json` | declares the extensions of this dll for ENCY (ids must match the factory) |
-| `src/package.info.json` | store metadata: packageId, version, `tags` (keep the `ency-extension` marker!), sdkVersion |
+| `src/package.info.json` | store metadata: packageId, version, `category` (what the extension DOES — see the list on the store's publish page), `tags` (keep the `ency-extension` marker!), sdkVersion |
 | `src/readme.md` | store card README |
 | `src/screenshots/` | PNG/JPG pictures of your extension — they become the card's screenshots, and the first one becomes its cover |
 | `.github/workflows/publish.yml` | tag → build → pack → publish |
