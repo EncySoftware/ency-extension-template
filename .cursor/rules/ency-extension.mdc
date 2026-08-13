@@ -30,8 +30,9 @@ This is an extension for ENCY CAM, published to the ENCY Extension Store by CI.
   version to "get something stable": 2.x is the previous generation of ENCY, and an extension built
   against it is an extension for the old product. Say so plainly if the pinned rc is a problem
   rather than quietly moving to 2.x.
-- Target stays `net8.0-windows` — the SDK's own assemblies are `netstandard2.0`, so ENCY 3 needs no
-  newer framework here, and the CI image stays as it is.
+- Target is `net10.0-windows`, following the application: ENCY 3 runs on .NET 10 and loads the
+  extension into its own process. Do not lower it — a net10 build will not load in an older net8
+  ENCY, but that is the version being written for.
 - The SDK package comes from the public `ency-master` feed (see `nuget.config`) — do not add other
   ENCY feeds.
 - Build for packing with `dotnet build src -c Release -t:PackReady` (normal build + sweeps
