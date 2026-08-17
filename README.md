@@ -1,7 +1,7 @@
 # ency-extension-template
 
 Template for an [ENCY](https://encycam.com) extension that **publishes itself to the
-[ENCY Extension Store](https://dmc.encycam.com/store) on every version tag**. Write code,
+[ENCY Extension Store](https://apps.encycam.com) on every version tag**. Write code,
 push a tag — the extension appears in the store. No files copied or uploaded by hand.
 
 ## Quick start
@@ -10,7 +10,7 @@ push a tag — the extension appears in the store. No files copied or uploaded b
    `PocketMill`. The first push renames the placeholder inside `src/` to match, on its own, so
    `git clone` gets you a project already called by your name.
 2. Let this repository publish under that name — once, and **nothing goes into GitHub**: open
-   [the store](https://dmc.encycam.com/store) → **My published** → *Connect a GitHub repository*.
+   [your profile in the store](https://apps.encycam.com/account) → *Connect*.
    Signing in to the store is the proof it is you; no token is created, so there is no secret to
    store, rotate or leak.
 

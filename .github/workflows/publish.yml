@@ -107,7 +107,7 @@ jobs:
           folder: src/bin/Release
           version: ${{ env.PKG_VERSION }}
           # Empty on a tag push, and empty is silence: the store keeps the category the extension
-          # already has. Ids: https://dmc.encycam.com/store/api/categories
+          # already has. Ids: https://apps.encycam.com/api/categories
           category: ${{ github.event_name == 'workflow_dispatch' && inputs.category || '' }}
           dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run }}
 
