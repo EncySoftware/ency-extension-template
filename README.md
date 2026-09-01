@@ -18,6 +18,11 @@ push a tag — the extension appears in the store. No files copied or uploaded b
    OIDC token, which GitHub issues per run and which expires on its own.
 3. Write your code in `src/` (start at `Extension.cs`), fill `src/readme.md` (it becomes the
    store card README) and `description`/`author` in `src/package.info.json`.
+
+   What the API can do, and worked examples of every extension kind:
+   **[cam-api-examples/docs](https://github.com/EncySoftware/cam-api-examples/tree/v3/main/docs)**
+   — the reference for writing extensions. Point your editor's assistant at it too; it does not
+   know this API on its own.
 4. Publish — no commands needed: open **Actions → publish-to-ency-store → Run workflow** and press
    the button with the fields empty. It works out the next version, tags the commit, builds, packs
    and publishes; the card link is in the job summary.

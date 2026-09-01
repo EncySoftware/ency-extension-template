@@ -7,6 +7,11 @@ alwaysApply: true
 
 This is an extension for ENCY CAM, published to the ENCY Extension Store by CI.
 
+**The API reference is not in this repo:**
+[cam-api-examples/docs](https://github.com/EncySoftware/cam-api-examples/tree/v3/main/docs) — what
+the CAM API can do, with a worked example of every extension kind. Read it before writing extension
+code; the rules here describe the repository, not the API.
+
 ## Anatomy (all under `src/`)
 
 - `ExtensionFactory.cs` — the entry point. The class MUST stay `CAMAPI.ExtensionFactory`
