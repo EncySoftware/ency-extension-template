@@ -19,10 +19,13 @@ push a tag — the extension appears in the store. No files copied or uploaded b
 3. Write your code in `src/` (start at `Extension.cs`), fill `src/readme.md` (it becomes the
    store card README) and `description`/`author` in `src/package.info.json`.
 
-   What the API can do, and worked examples of every extension kind:
-   **[cam-api-examples/docs](https://github.com/EncySoftware/cam-api-examples/tree/v3/main/docs)**
-   — the reference for writing extensions. Point your editor's assistant at it too; it does not
-   know this API on its own.
+   The API itself is documented outside this repo — point your editor's assistant at these too,
+   it does not know this API on its own:
+   **[reference](https://docs.encycam.com/CAMAPI/2/en/)** (every interface and method) ·
+   **[lessons](https://docs.encycam.com/CAMAPI/2/en/src/Lessons/Main.html)** (the same API in order,
+   from a first extension) ·
+   **[cam-api-examples](https://github.com/EncySoftware/cam-api-examples/tree/v3/main/docs)**
+   (a worked example of every extension kind).
 4. Publish — no commands needed: open **Actions → publish-to-ency-store → Run workflow** and press
    the button with the fields empty. It works out the next version, tags the commit, builds, packs
    and publishes; the card link is in the job summary.

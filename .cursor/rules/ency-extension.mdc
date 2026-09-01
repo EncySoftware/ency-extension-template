@@ -7,10 +7,14 @@ alwaysApply: true
 
 This is an extension for ENCY CAM, published to the ENCY Extension Store by CI.
 
-**The API reference is not in this repo:**
-[cam-api-examples/docs](https://github.com/EncySoftware/cam-api-examples/tree/v3/main/docs) — what
-the CAM API can do, with a worked example of every extension kind. Read it before writing extension
-code; the rules here describe the repository, not the API.
+**The API reference is not in this repo.** Read it before writing extension code — the rules here
+describe the repository, not the API:
+
+- [CAM API reference](https://docs.encycam.com/CAMAPI/2/en/) — every interface, property and method.
+- [Lessons](https://docs.encycam.com/CAMAPI/2/en/src/Lessons/Main.html) — the same API in order,
+  starting from a first extension.
+- [cam-api-examples/docs](https://github.com/EncySoftware/cam-api-examples/tree/v3/main/docs) —
+  a worked example of every extension kind.
 
 ## Anatomy (all under `src/`)
 
