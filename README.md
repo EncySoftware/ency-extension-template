@@ -35,6 +35,21 @@ push a tag — the extension appears in the store. No files copied or uploaded b
    Skipped step 2? The run stops and tells you so, with a ready link to the connect form — press
    Connect there and re-run the job.
 
+## Already have a project that was not made from this template?
+
+Keep it where it is. The workflow assumes this template's layout, so bring three things over:
+
+1. The code under `src/`, with `src/<Name>.settings.json` (the manifest — the store refuses a
+   package without one) and `src/package.info.json` next to it.
+2. The `PackReady` target from `src/EncyExtension.csproj` into your own `.csproj` — the workflow
+   builds with `-t:PackReady`, and without it the SDK's documentation xml lands in the package.
+3. `.github/workflows/publish.yml`, copied as is.
+
+Then connect the repository to the extension name — in the browser at
+[apps.encycam.com/account](https://apps.encycam.com/account) → *Connect*, or from a terminal with
+`ency-extension-mcp claim MyCoolExtension owner/MyCoolExtension` — and **Actions →
+publish-to-ency-store → Run workflow**, exactly as above.
+
 ## Rather stay in the console?
 
 Optional, and only worth it if you also want your editor's assistant to do this for you. Needs the
