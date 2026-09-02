@@ -6,8 +6,8 @@ push a tag — the extension appears in the store. No files copied or uploaded b
 
 ## Quick start
 
-1. **Use this template** (GitHub button) — name the repository after your extension, e.g.
-   `PocketMill`. The first push renames the placeholder inside `src/` to match, on its own, so
+1. **Use this template** — [this link](https://github.com/new?template_owner=EncySoftware&template_name=ency-extension-template) opens the form with the template already chosen; name
+   the repository after your extension, e.g. `PocketMill`. The first push renames the placeholder inside `src/` to match, on its own, so
    `git clone` gets you a project already called by your name.
 2. Let this repository publish under that name — once, and **nothing goes into GitHub**: open
    [your profile in the store](https://apps.encycam.com/account) → *Connect*.
