@@ -30,14 +30,19 @@ public class UtilityExtension : IExtension, IExtensionUtility
                 context.CamApplication.GetActiveProject(out resultStatus));
             if (resultStatus.Code == TResultStatusCode.rsError)
                 throw new Exception("Error getting project: " + resultStatus.Description);
-            var project = projectCom.Instance
-                ?? throw new Exception("No active project");
+            if (projectCom.IsNull)
+                throw new Exception("No active project");
+
+            // Talk to the COM object through Invoke: it runs the call on the thread the object
+            // belongs to. Reading .Instance directly is marked obsolete for exactly that reason.
+            string filePath = projectCom.Invoke(p => p.FilePath);
+            string id = projectCom.Invoke(p => p.Id);
 
             var tempFile = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".txt");
             File.WriteAllText(tempFile,
                 "Hello from EncyExtension!" + Environment.NewLine +
-                "Project file path: " + project.FilePath + Environment.NewLine +
-                "Project id: " + project.Id);
+                "Project file path: " + filePath + Environment.NewLine +
+                "Project id: " + id);
             Process.Start("notepad.exe", tempFile);
         }
         catch (Exception e)
