@@ -30,8 +30,8 @@ Everything below is the same pipeline driven by hand.
 
    The API itself is documented outside this repo — point your editor's assistant at these too,
    it does not know this API on its own:
-   **[reference](https://docs.encycam.com/CAMAPI/2/en/)** (every interface and method) ·
-   **[lessons](https://docs.encycam.com/CAMAPI/2/en/src/Lessons/Main.html)** (the same API in order,
+   **[reference](https://docs.encycam.com/CAMAPI/3/en/)** (every interface and method) ·
+   **[lessons](https://docs.encycam.com/CAMAPI/3/en/src/Lessons/Main.html)** (the same API in order,
    from a first extension) ·
    **[cam-api-examples](https://github.com/EncySoftware/cam-api-examples/tree/v3/main/docs)**
    (a worked example of every extension kind).

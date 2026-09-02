@@ -15,12 +15,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- ENCY 3. The 3.x SDK is still a release candidate — the only 3.x published on the public feed
-         — so the version is pinned rather than floated: an rc that moves under an author is worse
-         than one they chose. The framework follows the application: ENCY 3 runs on
-         .NET 10, and an extension is a library loaded into that process. The trade is one-way — a
-         net8 build loads in a net10 ENCY, a net10 build does not load in an older net8 one. -->
-    <PackageReference Include="EncySoftware.CAMAPI.Sdk.Net" Version="3.0.1-rc.22" />
+    <!-- ENCY 3. The version is pinned rather than floated, so a build is reproducible; newer 3.x
+         releases on the public feed are fine to move to. The framework follows the application:
+         ENCY 3 runs on .NET 10, and an extension is a library loaded into that process. The trade is
+         one-way — a net8 build loads in a net10 ENCY, a net10 build does not load in an older net8
+         one. -->
+    <PackageReference Include="EncySoftware.CAMAPI.Sdk.Net" Version="3.0.8" />
   </ItemGroup>
 
   <ItemGroup>

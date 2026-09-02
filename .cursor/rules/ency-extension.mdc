@@ -10,8 +10,8 @@ This is an extension for ENCY CAM, published to the ENCY Extension Store by CI.
 **The API reference is not in this repo.** Read it before writing extension code — the rules here
 describe the repository, not the API:
 
-- [CAM API reference](https://docs.encycam.com/CAMAPI/2/en/) — every interface, property and method.
-- [Lessons](https://docs.encycam.com/CAMAPI/2/en/src/Lessons/Main.html) — the same API in order,
+- [CAM API reference](https://docs.encycam.com/CAMAPI/3/en/) — every interface, property and method.
+- [Lessons](https://docs.encycam.com/CAMAPI/3/en/src/Lessons/Main.html) — the same API in order,
   starting from a first extension.
 - [cam-api-examples/docs](https://github.com/EncySoftware/cam-api-examples/tree/v3/main/docs) —
   a worked example of every extension kind.
@@ -39,11 +39,10 @@ from a broken script. Prefer no script at all: publishing here needs none.
 
 ## Rules
 
-- **This template targets ENCY 3.** The SDK is `EncySoftware.CAMAPI.Sdk.Net` **3.0.1-rc.22** —
-  a release candidate, because that is the only 3.x published so far. Do NOT swap it for a 2.x
-  version to "get something stable": 2.x is the previous generation of ENCY, and an extension built
-  against it is an extension for the old product. Say so plainly if the pinned rc is a problem
-  rather than quietly moving to 2.x.
+- **This template targets ENCY 3.** The SDK is `EncySoftware.CAMAPI.Sdk.Net` **3.0.8** — the 3.x
+  line; a newer 3.x on the public feed is fine to move to. Do NOT swap it for a 2.x version: 2.x is
+  the previous generation of ENCY, and an extension built against it is an extension for the old
+  product.
 - Target is `net10.0-windows`, following the application: ENCY 3 runs on .NET 10 and loads the
   extension into its own process. Do not lower it — a net10 build will not load in an older net8
   ENCY, but that is the version being written for.
