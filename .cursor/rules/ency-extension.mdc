@@ -77,7 +77,13 @@ This template ships a **utility**. Changing the kind means changing three things
 
 ## Publishing
 
-Push a version tag — CI builds, packs and publishes to the store:
+**The author is not at ease with a terminal, or `gh` is not logged in here? Do not run
+`gh auth login` for them** — it stops on a Y/n prompt that swallows the next pasted command.
+Send them to the store page: https://apps.encycam.com/publish → **A folder with the extension** →
+pick this project's folder → **Upload and publish**. The store creates the repository, commits
+the folder, runs the build and shows the result there; the next version is the same button.
+
+From a terminal, push a version tag — CI builds, packs and publishes to the store:
 
 ```bash
 git tag v0.1.0 && git push --tags

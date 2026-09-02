@@ -6,6 +6,13 @@ push a tag — the extension appears in the store. No files copied or uploaded b
 
 ## Quick start
 
+**No git, no terminal?** Open [apps.encycam.com/publish](https://apps.encycam.com/publish) →
+**A folder with the extension**: install the store app on GitHub once, name the extension, pick the
+folder with your code (`<Name>.csproj`, `package.info.json`, `<Name>.settings.json`) and press
+**Upload and publish**. The store creates the repository from this template, commits the folder,
+builds and publishes — the result shows on the same page. Everything below is the same pipeline
+driven by hand.
+
 1. **Use this template** — [this link](https://github.com/new?template_owner=EncySoftware&template_name=ency-extension-template) opens the form with the template already chosen; name
    the repository after your extension, e.g. `PocketMill`. The first push renames the placeholder inside `src/` to match, on its own, so
    `git clone` gets you a project already called by your name.
