@@ -40,7 +40,11 @@ from a broken script. Prefer no script at all: publishing here needs none.
 ## Rules
 
 - **This template targets ENCY 3.** The SDK is `EncySoftware.CAMAPI.Sdk.Net` **3.0.8** — the 3.x
-  line; a newer 3.x on the public feed is fine to move to. Do NOT swap it for a 2.x version: 2.x is
+  line, EXACTLY. Do NOT raise it: the SDK fixes the versions of the `*.DotnetHelper`
+  assemblies, ENCY ships its own copies, and .NET never loads one older than requested, so an
+  extension built against a newer SDK than the installed ENCY does not load at all — the manager
+  only reports "Could not create instance of CAMAPI.ExtensionFactory". Older SDK in newer ENCY is
+  fine; the reverse never is. Do NOT swap it for a 2.x version: 2.x is
   the previous generation of ENCY, and an extension built against it is an extension for the old
   product.
 - Target is `net10.0-windows`, following the application: ENCY 3 runs on .NET 10 and loads the

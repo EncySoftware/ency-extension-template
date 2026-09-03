@@ -15,12 +15,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- ENCY 3. The version is pinned rather than floated, so a build is reproducible; newer 3.x
-         releases on the public feed are fine to move to. The framework follows the application:
-         ENCY 3 runs on .NET 10, and an extension is a library loaded into that process. The trade is
-         one-way — a net8 build loads in a net10 ENCY, a net10 build does not load in an older net8
-         one. -->
-    <PackageReference Include="EncySoftware.CAMAPI.Sdk.Net" Version="3.0.8" />
+    <!-- ENCY 3. The version is EXACT (square brackets), not "at least", and must not be raised
+         casually. The SDK fixes the versions of the CAMAPI/CADAPI *.DotnetHelper assemblies; ENCY
+         ships its own copies of those and .NET never loads one older than requested. So an
+         extension built against an SDK newer than the installed ENCY does not load at all, and the
+         manager only says "Could not create instance of CAMAPI.ExtensionFactory", which names
+         nothing. Raise this only after that SDK has shipped in a released ENCY: 3.0.8 pulls
+         DotnetHelper 3.0.6, which is what ENCY 3.0.7 carries, while 3.0.9 pulls 3.0.7, which no
+         released ENCY has. The framework follows the application: ENCY 3 runs on .NET 10, and an
+         extension is a library loaded into that process. Both trades are one-way - an older SDK
+         and an older framework load in a newer ENCY, never the reverse. -->
+    <PackageReference Include="EncySoftware.CAMAPI.Sdk.Net" Version="[3.0.8]" />
   </ItemGroup>
 
   <ItemGroup>
