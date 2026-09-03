@@ -51,12 +51,13 @@ jobs:
       # user's failed install costs an evening (03.09.2026, EncyPulse with SDK 3.0.9). The store
       # answers what to build against, so this never goes stale the way a hardcoded number does.
       # A store that cannot answer is not a reason to fail: no map, no verdict, run continues.
+      # sed, not grep -oP: this job runs on windows-latest, where bash is Git Bash and -P is absent.
       - name: Check the SDK against released versions
         shell: bash
         run: |
-          pinned=$(grep -oP '"sdkVersion"\s*:\s*"\K[^"]+' src/package.info.json || true)
+          pinned=$(sed -n 's/.*"sdkVersion"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' src/package.info.json | head -1)
           [ -z "$pinned" ] && { echo "no sdkVersion in package.info.json - nothing to check"; exit 0; }
-          want=$(curl -fsS --max-time 20 https://apps.encycam.com/api/sdk | grep -oP '"sdkVersion"\s*:\s*"\K[^"]+' || true)
+          want=$(curl -fsS --max-time 20 https://apps.encycam.com/api/sdk | sed -n 's/.*"sdkVersion"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
           [ -z "$want" ] && { echo "the store did not answer - skipping the check"; exit 0; }
           echo "pinned: $pinned, newest released: $want"
           newest=$({ echo "$pinned"; echo "$want"; } | sort -V | tail -1)
