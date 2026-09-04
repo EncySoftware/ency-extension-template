@@ -25,7 +25,15 @@
          released ENCY has. The framework follows the application: ENCY 3 runs on .NET 10, and an
          extension is a library loaded into that process. Both trades are one-way - an older SDK
          and an older framework load in a newer ENCY, never the reverse. -->
-    <PackageReference Include="EncySoftware.CAMAPI.Sdk.Net" Version="[3.0.8]" />
+    <!-- Pinned BELOW what the store recommends, on purpose, and temporarily. An extension is
+         registered inside the store tab's own process, and the tab carries its own copies of the
+         CAMAPI assemblies - older than the ones ENCY ships. Built against 3.0.8 the extension calls
+         members those copies do not have, and registration fails with "Could not create instance of
+         CAMAPI.ExtensionFactory" on both the released and the nightly application (measured
+         04.09.2026 on EncyPulse 0.1.0 and a fresh EncyTest). Under 3.0.6 the requirements match
+         EncyToolsCatalog 0.1.23, which installs and runs on the released ENCY 3.0.7 today.
+         Raise this to what GET /api/sdk answers once a released ENCY carries the tab fix. -->
+    <PackageReference Include="EncySoftware.CAMAPI.Sdk.Net" Version="[3.0.6]" />
   </ItemGroup>
 
   <ItemGroup>
