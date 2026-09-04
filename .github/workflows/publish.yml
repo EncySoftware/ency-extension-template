@@ -52,18 +52,25 @@ jobs:
       # answers what to build against, so this never goes stale the way a hardcoded number does.
       # A store that cannot answer is not a reason to fail: no map, no verdict, run continues.
       # sed, not grep -oP: this job runs on windows-latest, where bash is Git Bash and -P is absent.
-      - name: Check the SDK against released versions
+      # Asked of the store rather than hard-coded here: it answers with the version it can INSTALL
+      # (registrableSdk), which is not always the newest it recommends. They differ while the
+      # extensions tab in the released application carries older assemblies than ENCY ships - a
+      # package built above that line publishes fine and then installs for nobody. The store refuses
+      # such a package too; this check only says so before the build instead of after it.
+      - name: Check the SDK against what the store can install
         shell: bash
         run: |
           pinned=$(sed -n 's/.*"sdkVersion"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' src/package.info.json | head -1)
           [ -z "$pinned" ] && { echo "no sdkVersion in package.info.json - nothing to check"; exit 0; }
-          want=$(curl -fsS --max-time 20 https://apps.encycam.com/api/sdk | sed -n 's/.*"sdkVersion"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
+          answer=$(curl -fsS --max-time 20 https://apps.encycam.com/api/sdk)
+          want=$(echo "$answer" | sed -n 's/.*"registrableSdk"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
+          [ -z "$want" ] && want=$(echo "$answer" | sed -n 's/.*"sdkVersion"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
           [ -z "$want" ] && { echo "the store did not answer - skipping the check"; exit 0; }
-          echo "pinned: $pinned, newest released: $want"
+          echo "pinned: $pinned, the store can install up to: $want"
           newest=$({ echo "$pinned"; echo "$want"; } | sort -V | tail -1)
           if [ "$newest" = "$pinned" ] && [ "$pinned" != "$want" ]; then
-            echo "::error::The SDK is pinned to $pinned, but the newest released version carries $want."
-            echo "::error::An extension built against an unreleased SDK does not load anywhere."
+            echo "::error::The SDK is pinned to $pinned, and the store can only install extensions built against $want."
+            echo "::error::Such a package publishes without a complaint and then fails to register on every machine."
             echo "::error::Set Version=\"[$want]\" in src/*.csproj and \"sdkVersion\": \"$want\" in src/package.info.json."
             exit 1
           fi
