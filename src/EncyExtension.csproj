@@ -16,24 +16,18 @@
 
   <ItemGroup>
     <!-- ENCY 3. The version is EXACT (square brackets), not "at least", and must not be raised
-         casually. The SDK fixes the versions of the CAMAPI/CADAPI *.DotnetHelper assemblies; ENCY
-         ships its own copies of those and .NET never loads one older than requested. So an
-         extension built against an SDK newer than the installed ENCY does not load at all, and the
-         manager only says "Could not create instance of CAMAPI.ExtensionFactory", which names
-         nothing. Raise this only after that SDK has shipped in a released ENCY: 3.0.8 pulls
-         DotnetHelper 3.0.6, which is what ENCY 3.0.7 carries, while 3.0.9 pulls 3.0.7, which no
-         released ENCY has. The framework follows the application: ENCY 3 runs on .NET 10, and an
-         extension is a library loaded into that process. Both trades are one-way - an older SDK
-         and an older framework load in a newer ENCY, never the reverse. -->
-    <!-- Pinned BELOW what the store recommends, on purpose, and temporarily. An extension is
-         registered inside the store tab's own process, and the tab carries its own copies of the
-         CAMAPI assemblies - older than the ones ENCY ships. Built against 3.0.8 the extension calls
-         members those copies do not have, and registration fails with "Could not create instance of
-         CAMAPI.ExtensionFactory" on both the released and the nightly application (measured
-         04.09.2026 on EncyPulse 0.1.0 and a fresh EncyTest). Under 3.0.6 the requirements match
-         EncyToolsCatalog 0.1.23, which installs and runs on the released ENCY 3.0.7 today.
-         Raise this to what GET /api/sdk answers once a released ENCY carries the tab fix. -->
-    <PackageReference Include="EncySoftware.CAMAPI.Sdk.Net" Version="[3.0.6]" />
+         casually. The SDK fixes the versions of the CAMAPI assemblies it binds to, and .NET never
+         loads one older than requested: an extension built against an SDK newer than the CEILING
+         does not load at all, and the manager only says "Could not create instance of
+         CAMAPI.ExtensionFactory", which names nothing.
+         The ceiling is not the newest SDK but what the extensions tab carries — registration runs
+         inside that tab's process. 3.0.8 was measured against the tab shipped in ENCY 3.1.1 on
+         14.09.2026 and registers; 3.0.12 does not, its CAMAPI.Application 3.0.6.0 is newer than the
+         tab's 3.0.5.0. Raise this to whatever GET /api/sdk answers in registrableSdk, never above.
+         The framework follows the application: ENCY 3 runs on .NET 10, and an extension is a library
+         loaded into that process. Both trades are one-way — an older SDK and an older framework load
+         in a newer ENCY, never the reverse. -->
+    <PackageReference Include="EncySoftware.CAMAPI.Sdk.Net" Version="[3.0.8]" />
   </ItemGroup>
 
   <ItemGroup>
