@@ -49,9 +49,11 @@ Everything below is the same pipeline driven by hand.
 Keep it where it is. The workflow assumes this template's layout, so bring three things over:
 
 1. The code under `src/`, with `src/<Name>.settings.json` (the manifest — the store refuses a
-   package without one) and `src/package.info.json` next to it.
-2. The `PackReady` target from `src/EncyExtension.csproj` into your own `.csproj` — the workflow
-   builds with `-t:PackReady`, and without it the SDK's documentation xml lands in the package.
+   package without one) and `src/package.info.json` next to it. No `package.info.json` yet? The
+   MCP tool writes one from your csproj (`ency-extension-mcp update-extension`, or any publish).
+2. `Directory.Build.props` and `Directory.Build.targets` from the repository root, as they are:
+   they give ANY csproj under the repository the flat output and the `PackReady` target the
+   workflow builds with — your own `.csproj` needs no edit.
 3. `.github/workflows/publish.yml`, copied as is.
 
 Then connect the repository to the extension name — in the browser at
@@ -81,7 +83,7 @@ called MyCoolExtension"*, then *"publish it as 0.1.0"*.
 dotnet build src -c Release -t:PackReady   # flat, pack-ready output in src\bin\Release
 ```
 
-(`-t:PackReady` = normal build + sweeps the SDK doc-xmls out of the output; see the csproj.)
+(`-t:PackReady` = normal build + sweeps the SDK doc-xmls out of the output; see `Directory.Build.targets`.)
 
 To try the built extension in a local ENCY before publishing: install it via the store card
 after a publish (new extensions are reachable by direct link right away), or — if you have the
