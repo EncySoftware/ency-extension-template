@@ -90,6 +90,51 @@ after a publish (new extensions are reachable by direct link right away), or —
 ENCY pack CLI — pack `src\bin\Release` yourself and use file install. CI needs no packing tool:
 the store backend packs the uploaded build output itself.
 
+## What the store asks you to declare
+
+Two things, both once-and-done:
+
+- **The Developer Agreement**, the first time you publish anything. Open
+  [apps.encycam.com/publish](https://apps.encycam.com/publish), read the six documents and press
+  **I Agree**. Until you have, every publish route — this workflow included — stops with a link to
+  that page.
+- **Reserved functionality**, with every submission. Schedule A of the Publishing Policy lists the
+  domains ENCY keeps for itself and for licensed modules; you say whether your extension works in
+  one of them. In this repository the answer lives in the `reservedFunctionality` block of
+  `src/package.info.json`, and the template ships it **unanswered**:
+
+  ```json
+  "reservedFunctionality": {
+    "see": "https://encycam.com/legal/extension-store/reserved-functionality/",
+    "none": false,
+    "domain": "",
+    "entitlement": "",
+    "confirmations": []
+  }
+  ```
+
+  Fill it in once, in one of two ways:
+
+  ```json
+  "reservedFunctionality": { "none": true, "confirmations": ["4.2", "4.9", "4.6"] }
+  ```
+
+  ```json
+  "reservedFunctionality": { "domain": "A-05", "entitlement": "Nesting",
+                             "confirmations": ["4.2", "4.9", "4.6"] }
+  ```
+
+  The domain codes are in
+  [Schedule A](https://encycam.com/legal/extension-store/reserved-functionality/); the entitlement
+  is the licensed module your extension checks for, spelled as the licensing system spells it
+  (the store's [publish page](https://apps.encycam.com/publish) lists both, and refuses a name it
+  does not know). The three confirmations are paragraphs 4.2, 4.9 and 4.6 of the
+  [Publishing Policy](https://encycam.com/legal/extension-store/publishing-policy/) — read them
+  before you write them down; they are your statement, not a formality.
+
+  **Until 1 November 2026** a run that leaves the block unanswered publishes anyway and prints a
+  warning. **From that day** the store refuses it.
+
 ## Layout
 
 | Path | Purpose |
@@ -97,7 +142,7 @@ the store backend packs the uploaded build output itself.
 | `src/Extension.cs` | your extension logic (`IExtensionUtility.Run`) |
 | `src/ExtensionFactory.cs` | entry point ENCY looks for (`CAMAPI.ExtensionFactory`) — keep the class/namespace |
 | `src/<YourName>.settings.json` | declares the extensions of this dll for ENCY (ids must match the factory) |
-| `src/package.info.json` | store metadata: packageId, version, `category` (what the extension DOES — see the list on the store's publish page), `tags` (keep the `ency-extension` marker!), sdkVersion |
+| `src/package.info.json` | store metadata: packageId, version, `category` (what the extension DOES — see the list on the store's publish page), `tags` (keep the `ency-extension` marker!), sdkVersion, `reservedFunctionality` (*What the store asks you to declare*, above) |
 | `src/readme.md` | store card README |
 | `src/screenshots/` | PNG/JPG pictures of your extension — they become the card's screenshots, and the first one becomes its cover |
 | `.github/workflows/publish.yml` | tag → build → pack → publish |
@@ -110,3 +155,5 @@ the store backend packs the uploaded build output itself.
 - `sdkVersion` controls the "minimal ENCY version" hint on the card — bump it when you bump
   the `EncySoftware.CAMAPI.Sdk.Net` package.
 - The publisher (token owner) becomes the extension owner in the store.
+- An unanswered `reservedFunctionality` block is a warning today and a refusal from
+  1 November 2026 — answer it once and it holds for every later version.

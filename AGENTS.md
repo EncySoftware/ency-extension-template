@@ -52,7 +52,7 @@ Two guides apply to every change:
 
 - `.cursor/rules/ency-extension.mdc` - repo anatomy: the `CAMAPI.ExtensionFactory` contract,
   matching ids between `*.settings.json` and the factory, `package.info.json`, how to build for
-  packing.
+  packing, and the `reservedFunctionality` declaration the author - not the assistant - answers.
 - `.cursor/rules/ency-cookbook.mdc` - COM lifetime (`ComWrapper`), errors through
   `TResultStatus`, asking the user for parameters, windows and STA rules.
 

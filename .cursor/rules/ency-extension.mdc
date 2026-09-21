@@ -36,6 +36,11 @@ from a broken script. Prefer no script at all: publishing here needs none.
   the "minimal ENCY version" hint — bump it together with the `EncySoftware.CAMAPI.Sdk.Net`
   package version. Do not set `iconPath` (packing chokes on it today).
 - `readme.md` — becomes the store card. Write it for users, not developers.
+- `reservedFunctionality` in `package.info.json` — the author's Schedule A declaration, shipped
+  unanswered. **Never answer it for them**: it is a legal statement about their extension, and
+  the three confirmations are theirs to make. When it is still empty, say what it is and offer
+  the two shapes; the store warns today and refuses from 1 November 2026. See the README section
+  "What the store asks you to declare".
 
 ## Rules
 
