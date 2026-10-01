@@ -15,11 +15,5 @@
   "tags": "Utility, ency-extension",
   "iconPath": "",
   "requiresRestart": false,
-  "reservedFunctionality": {
-    "see": "https://encycam.com/legal/extension-store/reserved-functionality/",
-    "none": false,
-    "domain": "",
-    "entitlement": "",
-    "confirmations": []
-  }
+  "reservedDomains": []
 }
