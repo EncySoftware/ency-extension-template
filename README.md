@@ -94,10 +94,10 @@ the store backend packs the uploaded build output itself.
 
 Two things, both once-and-done:
 
-- **The Developer Agreement**, the first time you publish anything. Open
-  [apps.encycam.com/publish](https://apps.encycam.com/publish), read the six documents and press
-  **I Agree**. Until you have, every publish route — this workflow included — stops with a link to
-  that page.
+- **Developer registration and the Developer Agreement**, before the first thing you publish. Open
+  [apps.encycam.com/publish](https://apps.encycam.com/publish), sign in, answer the short registration
+  (a company or you personally, free or paid extensions, your details) and press **I Agree**. Until
+  you have, every publish route — this workflow included — stops with a link to that page.
 - **Reserved functionality**, with every submission. Schedule A of the Publishing Policy lists the
   domains ENCY keeps for itself and for licensed modules; you say whether your extension works in
   one of them. In this repository the answer lives in the `reservedFunctionality` block of
