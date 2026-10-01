@@ -41,8 +41,11 @@ Everything below is the same pipeline driven by hand.
 
    From a terminal instead: `git tag v0.1.0 && git push --tags`.
 
-   Skipped step 2? The run stops and tells you so, with a ready link to the connect form — press
-   Connect there and re-run the job.
+   The first run may stop once at each one-time step, and the button in its job summary leads
+   straight there: **connect the repository** (when the run asks — you skipped step 2), **register
+   and accept the terms** (if you are new to the store) and **confirm the declaration** (always, for
+   the first release: the template ships an answer — see *What the store asks you to declare*). Do it
+   in the browser, then re-run the job.
 
 ## Already have a project that was not made from this template?
 
@@ -92,7 +95,7 @@ the store backend packs the uploaded build output itself.
 
 ## What the store asks you to declare
 
-Two things, both once-and-done:
+Two things:
 
 - **Developer registration and the Developer Agreement**, before the first thing you publish. Open
   [apps.encycam.com/publish](https://apps.encycam.com/publish), sign in, answer the short registration
@@ -117,9 +120,12 @@ Two things, both once-and-done:
 
   The areas and their licences are in
   [Schedule A](https://encycam.com/legal/extension-store/reserved-functionality/) and at
-  `https://apps.encycam.com/api/legal/reserved-functionality`. The first time a release carries an
-  answer, the store asks you to confirm it in the browser: the run stops with the link — confirm, then
-  run it again. Releases with the same answer publish at once; a changed answer asks again.
+  `https://apps.encycam.com/api/legal/reserved-functionality`. The first release with an answer stops
+  with a link to confirm it in the browser — confirm, then run the job again. Releases with that
+  answer then publish at once, until the store asks again: when the answer changes, when a new
+  version of Schedule A comes into force, when the words of the statements you confirm change, or
+  when a run is credited to another person — say, a colleague publishing from the same repository or
+  organisation: a confirmation counts only for whoever made it.
 
 ## Layout
 
