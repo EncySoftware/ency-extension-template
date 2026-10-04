@@ -124,8 +124,9 @@ Two things:
   with a link to confirm it in the browser — confirm, then run the job again. Releases with that
   answer then publish at once, until the store asks again: when the answer changes, when a new
   version of Schedule A comes into force, when the words of the statements you confirm change, or
-  when a run is credited to another person — say, a colleague publishing from the same repository or
-  organisation: a confirmation counts only for whoever made it.
+  when a run is credited to someone else: once the repository is bound to the package (its first
+  publication binds it), every run from it is credited to whoever bound it, so a colleague's run uses
+  that person's confirmation.
 
 ## Layout
 
