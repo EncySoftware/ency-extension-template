@@ -34,7 +34,9 @@ Everything below is the same pipeline driven by hand.
    **[lessons](https://docs.encycam.com/CAMAPI/3/en/src/Lessons/Main.html)** (the same API in order,
    from a first extension) ·
    **[cam-api-examples](https://github.com/EncySoftware/cam-api-examples/tree/v3/main/docs)**
-   (a worked example of every extension kind).
+   (a worked example of every extension kind) ·
+   **[design rules](https://github.com/EncySoftware/cam-api-examples/blob/v3/main/docs/general/design-rules.md)**
+   (how an extension should look and behave inside ENCY: layout, colours, wording, a checklist).
 4. Publish — no commands needed: open **Actions → publish-to-ency-store → Run workflow** and press
    the button with the fields empty. It works out the next version, tags the commit, builds, packs
    and publishes; the card link is in the job summary.
