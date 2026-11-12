@@ -34,6 +34,10 @@
          them into the output root, because CI uploads only the top level of the build output. -->
     <None Include="screenshots\*.png;screenshots\*.jpg;screenshots\*.jpeg;screenshots\*.gif;screenshots\*.webp"
           CopyToOutputDirectory="Always" Link="%(Filename)%(Extension)" />
+    <!-- The extension's documentation: Markdown pages and their pictures, shown on the extension's docs
+         page in the store and in ENCY. Unlike everything else it keeps its folders in the output, and the
+         publish workflow uploads docs\ as it is. A project without the folder simply has none. -->
+    <None Update="docs\**\*.md;docs\**\*.png;docs\**\*.jpg;docs\**\*.jpeg" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
 </Project>

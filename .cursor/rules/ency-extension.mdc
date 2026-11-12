@@ -36,6 +36,10 @@ from a broken script. Prefer no script at all: publishing here needs none.
   the "minimal ENCY version" hint — bump it together with the `EncySoftware.CAMAPI.Sdk.Net`
   package version. Do not set `iconPath` (packing chokes on it today).
 - `readme.md` — becomes the store card. Write it for users, not developers.
+- `docs/` — optional documentation: `.md` pages (`index.md` first) and `.png`/`.jpg` pictures,
+  linked relatively. The store shows the latest version's pages on the extension's docs page;
+  at most 50 pages and 5 MB, no raw HTML. `videoUrl` in `package.info.json` — a YouTube or Vimeo
+  link, empty for none; the store keeps no videos of its own.
 - `reservedDomains` in `package.info.json` — the author's Schedule A declaration (Schedule B
   §B.3.2): one `{ "domain", "entitlement", "capabilities" }` entry per Schedule A area the
   extension provides, with the licence Schedule A assigns to that area (`capabilities` is

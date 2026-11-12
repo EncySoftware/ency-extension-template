@@ -26,7 +26,8 @@ Everything below is the same pipeline driven by hand.
    Every publish after that — the first one included — authenticates with the workflow's own GitHub
    OIDC token, which GitHub issues per run and which expires on its own.
 3. Write your code in `src/` (start at `Extension.cs`), fill `src/readme.md` (it becomes the
-   store card README) and `description`/`author` in `src/package.info.json`.
+   store card README) and `description`/`author` in `src/package.info.json`. Documentation pages and
+   a video are optional — see *Documentation and a video*.
 
    The API itself is documented outside this repo — point your editor's assistant at these too,
    it does not know this API on its own:
@@ -130,6 +131,18 @@ Two things:
   publication binds it), every run from it is credited to whoever bound it, so a colleague's run uses
   that person's confirmation.
 
+## Documentation and a video
+
+- **Documentation**: Markdown pages in `src/docs/`. `index.md` opens first, the others follow by
+  path, and a page's first heading is its title. Pictures (`.png`, `.jpg`) sit next to the pages and
+  are linked relatively, as are the pages: `![Dialog](img/dialog.png)`, `[Setup](setup.md#machine)`.
+  The store shows them on the extension's docs page and in the Extensions tab of ENCY. Up to 50 pages
+  and 5 MB; raw HTML is not drawn, files of other types are not shown, and a link to a page that is
+  not there is a warning of the publish. Only the latest version's docs are shown.
+- **Video**: a YouTube or Vimeo link in `videoUrl` of `src/package.info.json`. It becomes the first
+  frame of the card's gallery and plays on the video's own site — the store keeps no videos. Empty
+  means none; a video set on the store's publish form wins over this one.
+
 ## Layout
 
 | Path | Purpose |
@@ -137,9 +150,10 @@ Two things:
 | `src/Extension.cs` | your extension logic (`IExtensionUtility.Run`) |
 | `src/ExtensionFactory.cs` | entry point ENCY looks for (`CAMAPI.ExtensionFactory`) — keep the class/namespace |
 | `src/<YourName>.settings.json` | declares the extensions of this dll for ENCY (ids must match the factory) |
-| `src/package.info.json` | store metadata: packageId, version, `category` (what the extension DOES — see the list on the store's publish page), `tags` (keep the `ency-extension` marker!), sdkVersion, `reservedDomains` (*What the store asks you to declare*, above) |
+| `src/package.info.json` | store metadata: packageId, version, `category` (what the extension DOES — see the list on the store's publish page), `tags` (keep the `ency-extension` marker!), sdkVersion, `videoUrl` (*Documentation and a video*, above), `reservedDomains` (*What the store asks you to declare*, above) |
 | `src/readme.md` | store card README |
 | `src/screenshots/` | PNG/JPG pictures of your extension — they become the card's screenshots, and the first one becomes its cover |
+| `src/docs/` | optional documentation: Markdown pages and their pictures (*Documentation and a video*, above) |
 | `.github/workflows/publish.yml` | tag → build → pack → publish |
 
 ## Rules worth knowing
